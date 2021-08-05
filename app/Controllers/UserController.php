@@ -15,7 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        $users = UserModel::load()->all();
+
+        return View::render('users/index.view', [
+            'users'  => $users,
+        ]);
     }
 
     /**
@@ -44,7 +48,10 @@ class UserController extends Controller
         $user['created'] = date('Y-m-d H:i:s');
 
         // Save the record to the database
-        UserModel::load()->store($user);
+        $userId = UserModel::load()->store($user);
+        
+        //Return to the user-overview
+        header("Location: /user/$userId");
     }
 
     /**
@@ -69,8 +76,6 @@ class UserController extends Controller
      */
     public function update()
     {
-        dd($_SERVER);
-
         $userId = Helper::getIdFromUrl('user');
         
         // Save post data in $user var
@@ -81,6 +86,8 @@ class UserController extends Controller
         $user['updated'] = date('Y-m-d H:i:s');
 
         UserModel::load()->update($user, $userId);
+
+        header("Location: /user/$userId");
     }
 
     /**
@@ -105,6 +112,7 @@ class UserController extends Controller
         $userId = Helper::getIdFromUrl('user');
 
         UserModel::load()->destroy($userId);
+        header("Location: /user");
     }
 
 }

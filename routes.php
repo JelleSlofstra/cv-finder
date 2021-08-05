@@ -49,6 +49,10 @@ $router->get('user/{id}/destroy', 'App/Controllers/UserController.php@destroy', 
     'delete' => Permissions::class
 ]);
 
+$router->get('user/{id}/educations', 'App/Controllers/EducationController.php@index', [
+    'show' => Permissions::class
+]);
+
 $router->get('me', 'App/Controllers/ProfileController.php@index');
 
 $router->get('', 'App/Controllers/HomeController.php@index');

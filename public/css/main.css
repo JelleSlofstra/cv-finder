@@ -11,7 +11,7 @@ body {
 a:link,
 a:active,
 a:visited {
-    color: white;
+    color: teal;
 }
 
 .error-message {

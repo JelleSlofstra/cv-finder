@@ -46,6 +46,23 @@ class Model
         return MySql::query($sql)->fetchAll(PDO::FETCH_CLASS);
     }
 
+    /**
+     * Fetching all records from table for a certain User-id
+     * @return array of objects
+     */
+    public function getAllByUserId(int $id, array $selectedFields = null)
+    {
+        $fields = "*";
+        
+        if (!empty($selectedFields) && count($selectedFields) > 0) {
+            $fields = $this->composeQuery($selectedFields);
+        }
+
+        $sql = "SELECT " . $fields . " FROM " . $this->model . " WHERE user_id=" . $id . " AND deleted IS NULL";
+
+        return MySql::query($sql)->fetchAll(PDO::FETCH_CLASS);
+    }
+
 
     /**
      * Fetching one record based on the id
@@ -70,7 +87,6 @@ class Model
 
         return count($res) > 0 ? $res[0] : null;
     }
-
 
     public function findById($id)
     {
