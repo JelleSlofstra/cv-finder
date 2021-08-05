@@ -1,0 +1,3 @@
+<?php require 'views/partials/header.view.php' ?>
+    Content comes here...
+<?php require 'views/partials/footer.view.php' ?>
