@@ -112,6 +112,9 @@ class MySql
         $setStr = "";
         $params = array();
 
+        $data['updated'] = date('Y-m-d H:i:s');
+        $data['updated_by'] = Helper::getUserIdFromSession();
+        
         foreach ($data as $col => $val)
         {
             if (trim(strtolower($col)) === 'id')

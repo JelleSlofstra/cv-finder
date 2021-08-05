@@ -19,6 +19,8 @@ $router->get('admin', 'App/Controllers/AdminController.php@index', [
     'auth' => WhenNotLoggedin::class,
 ]);
 
+//User Routes
+
 $router->get('user', 'App/Controllers/UserController.php@index', [
     'show' => Permissions::class
 ]);
@@ -49,9 +51,23 @@ $router->get('user/{id}/destroy', 'App/Controllers/UserController.php@destroy', 
     'delete' => Permissions::class
 ]);
 
+//Education Routes
+
 $router->get('user/{id}/educations', 'App/Controllers/EducationController.php@index', [
     'show' => Permissions::class
 ]);
+
+$router->get('education/create', 'App/Controllers/EducationController.php@create');
+
+$router->post('education/store', 'App/Controllers/EducationController.php@store', [
+    'store' => Permissions::class
+]);
+
+$router->get('education/{id}/destroy', 'App/Controllers/EducationController.php@destroy', [
+    'delete' => Permissions::class
+]);
+
+//Other Routes
 
 $router->get('me', 'App/Controllers/ProfileController.php@index');
 

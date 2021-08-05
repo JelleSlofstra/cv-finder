@@ -15,9 +15,12 @@
                             <?= $education->end_year ?>:
                         <?php endif; ?>
                     </div>
-                    <div class="col-10">
+                    <div class="col-6">
                         <b> <?= $education->name ?></b>
                         <?= $education->info ?>
+                    </div>
+                    <div class="col-3">
+                        <a href="/education/<?= $education->id?>/destroy">Delete</a>
                     </div>
                 </div>
             </li>            
