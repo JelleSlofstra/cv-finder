@@ -34,8 +34,26 @@ return [
             'created_by'    => 1,
         ],
         [
+            'user_id'       => 1,
+            'name'          => 'schilderen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 1,
+            'name'          => 'bloemschikken',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
             'user_id'       => 2,
             'name'          => 'lezen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 2,
+            'name'          => 'programmeren',        
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1,
         ],
@@ -48,6 +66,18 @@ return [
         [
             'user_id'       => 3,
             'name'          => 'dammen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 3,
+            'name'          => 'bier drinken',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 3,
+            'name'          => 'wijn drinken',        
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1,
         ],)
