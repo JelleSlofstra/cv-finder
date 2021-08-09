@@ -85,6 +85,27 @@ $router->get('job/{id}/destroy', 'App/Controllers/JobController.php@destroy', [
     'delete' => Permissions::class]);
 
 //
+//volunteerjob Routes
+//
+
+$router->get('volunteerjob/create', 'App/Controllers/VolunteerJobController.php@create');
+
+$router->post('volunteerjob/store', 'App/Controllers/VolunteerJobController.php@store', [
+    'store' => Permissions::class]);
+
+$router->get('user/{id}/volunteerjobs', 'App/Controllers/VolunteerJobController.php@index', [
+    'show' => Permissions::class]);
+
+$router->get('volunteerjob/{id}/edit', 'App/Controllers/VolunteerJobController.php@edit', [
+    'edit' => Permissions::class]);
+
+$router->post('volunteerjob/{id}/update', 'App/Controllers/VolunteerJobController.php@update', [
+    'update' => Permissions::class]);
+
+$router->get('volunteerjob/{id}/destroy', 'App/Controllers/VolunteerJobController.php@destroy', [
+    'delete' => Permissions::class]);
+    
+//
 //Other Routes
 //
 
