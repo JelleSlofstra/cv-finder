@@ -16,42 +16,77 @@ use App\Middleware\Permissions;
 
 
 $router->get('admin', 'App/Controllers/AdminController.php@index', [
-    'auth' => WhenNotLoggedin::class,
-]);
+    'auth' => WhenNotLoggedin::class,]);
+
+//
+//User Routes
+//
 
 $router->get('user', 'App/Controllers/UserController.php@index', [
-    'show' => Permissions::class
-]);
+    'show' => Permissions::class]);
 
 $router->get('user/{id}', 'App/Controllers/UserController.php@show', [
-    'read' => Permissions::class
-]);
-
-$router->get('user/{id}', 'App/Controllers/UserController.php@show', [
-    'show' => Permissions::class
-]);
+    'read' => Permissions::class]);
 
 $router->get('user/{id}/edit', 'App/Controllers/UserController.php@edit', [
-    'edit' => Permissions::class
-]);
+    'edit' => Permissions::class]);
 
 $router->get('user/create', 'App/Controllers/UserController.php@create');
 
 $router->post('user/{id}/update', 'App/Controllers/UserController.php@update', [
-    'update' => Permissions::class
-]);
+    'update' => Permissions::class]);
 
 $router->post('user/store', 'App/Controllers/UserController.php@store', [
-    'store' => Permissions::class
-]);
+    'store' => Permissions::class]);
 
 $router->get('user/{id}/destroy', 'App/Controllers/UserController.php@destroy', [
-    'delete' => Permissions::class
-]);
+    'delete' => Permissions::class]);
+
+//
+//Education Routes
+//
+
+$router->get('education/create', 'App/Controllers/EducationController.php@create');
+
+$router->post('education/store', 'App/Controllers/EducationController.php@store', [
+    'store' => Permissions::class]);
 
 $router->get('user/{id}/educations', 'App/Controllers/EducationController.php@index', [
-    'show' => Permissions::class
-]);
+    'show' => Permissions::class]);
+
+$router->get('education/{id}/edit', 'App/Controllers/EducationController.php@edit', [
+    'edit' => Permissions::class]);
+
+$router->post('education/{id}/update', 'App/Controllers/EducationController.php@update', [
+    'update' => Permissions::class]);
+
+$router->get('education/{id}/destroy', 'App/Controllers/EducationController.php@destroy', [
+    'delete' => Permissions::class]);
+
+//
+//job Routes
+//
+
+$router->get('job/create', 'App/Controllers/JobController.php@create');
+
+$router->post('job/store', 'App/Controllers/JobController.php@store', [
+    'store' => Permissions::class]);
+
+$router->get('user/{id}/jobs', 'App/Controllers/JobController.php@index', [
+    'show' => Permissions::class]);
+
+$router->get('job/{id}/edit', 'App/Controllers/JobController.php@edit', [
+    'edit' => Permissions::class]);
+
+$router->post('job/{id}/update', 'App/Controllers/JobController.php@update', [
+    'update' => Permissions::class]);
+
+$router->get('job/{id}/destroy', 'App/Controllers/JobController.php@destroy', [
+    'delete' => Permissions::class]);
+
+//
+//Other Routes
+//
 
 $router->get('me', 'App/Controllers/ProfileController.php@index');
 
