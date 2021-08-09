@@ -1,27 +1,28 @@
 <?php require 'views/partials/header.view.php' ?>
 
 <div class="main">
-    <h2>Opleidingen van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h2>
+    <h2>Banen van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h2>
     <hr>
     <ul>            
-        <?php foreach($vars['educations'] as $education): ?>
+        <?php foreach($vars['jobs'] as $job): ?>
             <li>
                 <div class="row">
                     <div class="col-2">
-                        <?= $education->start_year ?> -
-                        <?php if (!$education->end_year): ?>
+                        <?= $job->start_year ?> -
+                        <?php if (!$job->end_year): ?>
                             heden:
                         <?php else: ?>
-                            <?= $education->end_year ?>:
+                            <?= $job->end_year ?>:
                         <?php endif; ?>
                     </div>
                     <div class="col-6">
-                        <b> <?= $education->name ?></b>
-                        <?= $education->info ?>
+                        <b> <?= $job->job ?></b> 
+                        bij <?= $job->company?>
+                        <?= $job->info ?>
                     </div>
                     <div class="col-3">
-                        <a href="/education/<?= $education->id?>/edit">Edit</a>
-                        <a href="/education/<?= $education->id?>/destroy">Delete</a>
+                        <a href="/job/<?= $job->id?>/edit">Edit</a>
+                        <a href="/job/<?= $job->id?>/destroy">Delete</a>
                     </div>
                 </div>
             </li>            

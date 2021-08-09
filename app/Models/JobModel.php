@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-class RoleModel extends Model
-{
+use App\Libraries\MySql;
+use App\Libraries\QueryBuilder;
+use PDO;
 
+class JobModel extends Model
+{
     // Name of the table
-    protected $model = "roles";
+    protected $model = "jobs";
 
     // Max number of records when fetching all records from table
     protected $limit;
@@ -36,10 +39,5 @@ class RoleModel extends Model
             $this->protectedFields
         );   
     }
-
-    public function roleName($role_id)
-    {
-        return $this->get($role_id, ['name']);
-    }
-
+    
 }

@@ -9,7 +9,7 @@ use PDO;
 class EducationModel extends Model
 {
     // Name of the table
-    protected $model = "education";
+    protected $model = "educations";
 
     // Max number of records when fetching all records from table
     protected $limit;

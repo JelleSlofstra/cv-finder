@@ -11,7 +11,7 @@ class EducationController extends Controller
 {
 
     /**
-     * Show's a list of users
+     * Show's a list of educations for one user
      */
     public function index()
     {
@@ -26,14 +26,14 @@ class EducationController extends Controller
     }
 
     /**
-     * Show a form to create a new user
+     * Show a form to create a new education
      */
     public function create()
     {   
         return View::render('educations/create.view', [
             'method'    => 'POST',
             'action'    => '/education/store',
-            'users'      => UserModel::load()->all(),
+            'users'     => UserModel::load()->all(),
         ]);
     }
 
@@ -52,17 +52,25 @@ class EducationController extends Controller
         // Save the record to the database
         EducationModel::load()->store($education);
         
-        //Return to the user-overview
+        // Return to the user-overview
         $userId = $education['user_id'];
         header("Location: /user/$userId/educations");
     }
 
     /**
-     * Show a form to edit a user record
+     * Show a form to edit a education record
      */
     public function edit()
     {
+        $educationId = Helper::getIdFromUrl('education');
+        $education = EducationModel::load()->get($educationId);
 
+        return View::render('educations/edit.view', [
+            'method'    => 'POST',
+            'action'    => '/education/' . $educationId . '/update',
+            'education' => $education,
+            'users'     => UserModel::load()->all(),            
+        ]);
     }
 
     /**
@@ -70,11 +78,23 @@ class EducationController extends Controller
      */
     public function update()
     {
+        $educationId = Helper::getIdFromUrl('education');
+        $education = $_POST;
 
+        // Set updated_by ID and set the date of updating
+        $education['updated_by'] = Helper::getUserIdFromSession();
+        $education['updated'] = date('Y-m-d H:i:s');
+
+        // Update the record in the database
+        EducationModel::load()->update($education, $educationId);
+
+        // Return to the user-overview
+        $userId = $education['user_id'];
+        header("Location: /user/$userId/educations");
     }
 
     /**
-     * Show user record
+     * Show education record
      */
     public function show()
     {
@@ -82,7 +102,7 @@ class EducationController extends Controller
     }
 
     /**
-     * Archive a user record into the database (soft delete)
+     * Archive a education record into the database (soft delete)
      */
     public function destroy()
     {
