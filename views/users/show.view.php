@@ -19,6 +19,7 @@
         <div class="col-2">Geboortedatum: </div>
         <div class="col-10"><?= $vars['user']->birthday ?></div>
     </div>   
+    <hr>
     <a href="/user/<?=$vars['user']->id?>/destroy">Verwijder deze gebruiker</a> 
 </div>
 

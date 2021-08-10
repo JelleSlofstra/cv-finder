@@ -2,6 +2,7 @@
 
 <div class="main">
     <h3>Skills van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h3>
+    <hr>
     <ul>
         <?php foreach($vars['skills'] as $skill):?>
             <li>
@@ -17,6 +18,7 @@
             </li>                       
         <?php endforeach;?>
     </ul>
+    <hr>
     <a href="/skill/create">Voeg een nieuwe skill toe</a>
 </div>
 

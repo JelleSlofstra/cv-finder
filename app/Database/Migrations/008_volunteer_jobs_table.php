@@ -115,7 +115,7 @@ return [
             'start_year'    => 2010,
             'end_year'      => 2020,
             'job'           => 'zangleraar',
-            'organization'  => 'Zangkoor de Sympfonie',
+            'organization'  => 'Zangkoor de Symfonie',
             'info'          => 'in Zuidbroek',          
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 3,

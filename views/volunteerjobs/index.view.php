@@ -28,6 +28,7 @@
             </li>            
         <?php endforeach; ?>
     </ul>
+    <hr>
     <a href="/volunteerjob/create">Voeg nieuw vrijwilligerswerk toe</a>  
 </div>
 

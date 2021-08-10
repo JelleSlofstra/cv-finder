@@ -26,8 +26,12 @@
                   <a class="nav-link" href="/hobbies">Hobby's</a>
                </li>
             </ul>
-            <a href="/logout">Logout</a>
          </div>
+         <a class="nav-link" href="/logout">Logout</a>
       </div>
    </nav>
 </header>
+
+<div class="row">
+   <div class="col-1 purple"></div>
+   <div class="col-10">

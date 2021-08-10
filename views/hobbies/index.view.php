@@ -1,6 +1,8 @@
 <?php require 'views/partials/header.view.php' ?>
 
-<h3>Hobby's van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h3>
+<div class="main">
+    <h3>Hobby's van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h3>
+    <hr>
     <ul>
         <?php foreach($vars['hobbies'] as $hobby): ?>
             <li>
@@ -14,6 +16,9 @@
             </li>
         <?php endforeach; ?>
     </ul>
+    <hr>
     <a href="/hobby/create">Voeg een nieuwe hobby toe</a>
+</div>
+
 
 <?php require 'views/partials/footer.view.php' ?>

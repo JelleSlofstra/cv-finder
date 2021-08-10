@@ -53,10 +53,6 @@
                         bij <?= $job->company?>
                         <?= $job->info ?>
                     </div>
-                    <div class="col-3">
-                        <a href="/job/<?= $job->id?>/edit">Edit</a>
-                        <a href="/job/<?= $job->id?>/destroy">Delete</a>
-                    </div>
                 </div>
             </li>            
         <?php endforeach; ?>
@@ -80,10 +76,6 @@
                     <div class="col-6">
                         <b> <?= $education->name ?></b>
                         <?= $education->info ?>
-                    </div>
-                    <div class="col-3">
-                        <a href="/education/<?= $education->id?>/edit">Edit</a>
-                        <a href="/education/<?= $education->id?>/destroy">Delete</a>
                     </div>
                 </div>
             </li>            
@@ -110,10 +102,6 @@
                         bij <?= $volunteerjob->organization?>
                         <?= $volunteerjob->info ?>
                     </div>
-                    <div class="col-3">
-                        <a href="/volunteerjob/<?= $volunteerjob->id?>/edit">Edit</a>
-                        <a href="/volunteerjob/<?= $volunteerjob->id?>/destroy">Delete</a>
-                    </div>
                 </div>
             </li>            
         <?php endforeach; ?>
@@ -129,10 +117,6 @@
                     <div class="col-6">
                         <?=$skill->name?>
                     </div>
-                    <div class="col-6">
-                        <a href="/skill/<?= $skill->id?>/edit">Edit</a>
-                        <a href="/skill/<?= $skill->id?>/destroy">Delete</a>
-                    </div>
                 </div> 
             </li>                       
         <?php endforeach;?>
@@ -146,10 +130,6 @@
             <li>
                 <div class="row">
                     <div class="col-6"><?=$hobby->name?></div>
-                    <div class="col-6">
-                        <a href="hobby/<?=$hobby->id?>/edit">Edit</a>
-                        <a href="hobby/<?=$hobby->id?>/destroy">Delete</a>
-                    </div>
                 </div>
             </li>
         <?php endforeach; ?>
