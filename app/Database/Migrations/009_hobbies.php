@@ -34,22 +34,52 @@ return [
             'created_by'    => 1,
         ],
         [
+            'user_id'       => 1,
+            'name'          => 'schaken',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 1,
+            'name'          => 'olifanten voeren',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
             'user_id'       => 2,
             'name'          => 'lezen',        
             'created'       => date('Y-m-d H:i:s'),
-            'created_by'    => 1,
+            'created_by'    => 2,
         ],
         [
             'user_id'       => 2,
             'name'          => 'korfbal',        
             'created'       => date('Y-m-d H:i:s'),
-            'created_by'    => 1,
+            'created_by'    => 2,
+        ],
+        [
+            'user_id'       => 2,
+            'name'          => 'hardlopen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 2,
         ],
         [
             'user_id'       => 3,
             'name'          => 'dammen',        
             'created'       => date('Y-m-d H:i:s'),
-            'created_by'    => 1,
+            'created_by'    => 3,
+        ],
+        [
+            'user_id'       => 3,
+            'name'          => 'saxofoon spelen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 3,
+        ],
+        [
+            'user_id'       => 3,
+            'name'          => 'zingen in een koor',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 3,
         ],)
     ],
 ];

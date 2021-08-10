@@ -15,7 +15,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
         $educations = EducationModel::load()->getAllByUserId($userId);
         $user = UserModel::load()->get($userId);
 
@@ -32,8 +32,7 @@ class EducationController extends Controller
     {   
         return View::render('educations/create.view', [
             'method'    => 'POST',
-            'action'    => '/education/store',
-            'users'     => UserModel::load()->all(),
+            'action'    => '/education/store'
         ]);
     }
 
@@ -46,6 +45,7 @@ class EducationController extends Controller
         $education = $_POST;
 
         // Set created_by ID and set the date of creation
+        $education['user_id'] = Helper::getUserIdFromSession();
         $education['created_by'] = Helper::getUserIdFromSession();
         $education['created'] = date('Y-m-d H:i:s');
 
@@ -53,8 +53,7 @@ class EducationController extends Controller
         EducationModel::load()->store($education);
         
         // Return to the user-overview
-        $userId = $education['user_id'];
-        header("Location: /user/$userId/educations");
+        header("Location: /educations");
     }
 
     /**
@@ -82,6 +81,7 @@ class EducationController extends Controller
         $education = $_POST;
 
         // Set updated_by ID and set the date of updating
+        $education['user_id'] = Helper::getUserIdFromSession();
         $education['updated_by'] = Helper::getUserIdFromSession();
         $education['updated'] = date('Y-m-d H:i:s');
 
@@ -89,8 +89,7 @@ class EducationController extends Controller
         EducationModel::load()->update($education, $educationId);
 
         // Return to the user-overview
-        $userId = $education['user_id'];
-        header("Location: /user/$userId/educations");
+        header("Location: /educations");
     }
 
     /**
@@ -107,9 +106,9 @@ class EducationController extends Controller
     public function destroy()
     {
         $educationId = Helper::getIdFromUrl('education');
-        $userId = EducationModel::load()->get($educationId)->user_id;
         EducationModel::load()->destroy($educationId);
-        header("Location: /user/$userId/educations");
+
+        header("Location: /educations");
     }
 
 }

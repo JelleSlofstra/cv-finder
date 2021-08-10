@@ -34,22 +34,52 @@ return [
             'created_by'    => 1,
         ],
         [
-            'user_id'       => 2,
-            'name'         => 'programmeren',        
+            'user_id'       => 1,
+            'name'         => 'coachen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 1,
+            'name'         => 'appels eten',        
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1,
         ],
         [
             'user_id'       => 2,
-            'name'         => 'php',        
+            'name'         => 'programmeren',        
             'created'       => date('Y-m-d H:i:s'),
-            'created_by'    => 1,
+            'created_by'    => 2,
+        ],
+        [
+            'user_id'       => 2,
+            'name'         => 'trainen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 2,
+        ],
+        [
+            'user_id'       => 2,
+            'name'         => 'coachen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 2,
         ],
         [
             'user_id'       => 3,
             'name'         => 'slapen',        
             'created'       => date('Y-m-d H:i:s'),
-            'created_by'    => 1,
+            'created_by'    => 3,
+        ],
+        [
+            'user_id'       => 3,
+            'name'         => 'appels eten',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 3,
+        ],
+        [
+            'user_id'       => 3,
+            'name'         => 'bananen prakken',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 3,
         ],)
     ],
 ];
