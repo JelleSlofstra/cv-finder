@@ -15,7 +15,7 @@ class VolunteerJobController extends Controller
     public function index()
     {
         //Get the userId, userInfo and the volunteerjobs for this user
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
         $volunteerJobs = VolunteerJobModel::load()->getAllByUserId($userId);
         $user = UserModel::load()->get($userId);
 
@@ -45,9 +45,13 @@ class VolunteerJobController extends Controller
     public function store()
     {
         // Save post data in $volunteerJob var
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $volunteerJob = $_POST;
 
         // Set created_by ID and set the date of creation
+        $volunteerJob['user_id'] = Helper::getUserIdFromSession();
         $volunteerJob['created_by'] = Helper::getUserIdFromSession();
         $volunteerJob['created'] = date('Y-m-d H:i:s');
 
@@ -56,7 +60,7 @@ class VolunteerJobController extends Controller
         
         // Return to the user-overview        
         $userId = $volunteerJob['user_id'];
-        header("Location: /user/$userId/volunteerjobs");
+        header("Location: /volunteerjobs");
     }
 
     /**
@@ -81,9 +85,13 @@ class VolunteerJobController extends Controller
     public function update()
     {
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $volunteerJob = $_POST;
 
         // Set updated_by ID and set the date of updating
+        $volunteerJob['user_id'] = Helper::getUserIdFromSession();
         $volunteerJob['updated_by'] = Helper::getUserIdFromSession();
         $volunteerJob['updated'] = date('Y-m-d H:i:s');
 
@@ -92,7 +100,7 @@ class VolunteerJobController extends Controller
 
         // Return to the user-overview
         $userId = $volunteerJob['user_id'];
-        header("Location: /user/$userId/volunteerjobs");
+        header("Location: /volunteerjobs");
 
     }
 
@@ -105,6 +113,6 @@ class VolunteerJobController extends Controller
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
         $userId = VolunteerJobModel::load()->get($volunteerJobId)->user_id;
         VolunteerJobModel::load()->destroy($volunteerJobId);
-        header("Location: /user/$userId/volunteerjobs");
+        header("Location: /volunteerjobs");
     }
 }

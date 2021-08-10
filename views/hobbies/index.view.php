@@ -14,5 +14,6 @@
             </li>
         <?php endforeach; ?>
     </ul>
+    <a href="/hobby/create">Voeg een nieuwe hobby toe</a>
 
 <?php require 'views/partials/footer.view.php' ?>

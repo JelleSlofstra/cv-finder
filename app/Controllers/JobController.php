@@ -19,7 +19,7 @@ class JobController extends Controller
         $jobs = JobModel::load()->getAllByUserId($userId);
         $user = UserModel::load()->get($userId);
 
-        View::render('jobs/index.view', [
+        return View::render('jobs/index.view', [
             'jobs'  => $jobs,
             'user'  => $user
         ]);
@@ -43,6 +43,9 @@ class JobController extends Controller
     public function store()
     {
         // Save post data in $job var
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $job = $_POST;
 
         // Set created_by ID and set the date of creation
@@ -78,6 +81,9 @@ class JobController extends Controller
     public function update()
     {
         $jobId = Helper::getIdFromUrl('job');
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $job = $_POST;
 
         // Set updated_by ID and set the date of updating

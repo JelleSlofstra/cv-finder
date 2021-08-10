@@ -17,7 +17,7 @@
             </li>                       
         <?php endforeach;?>
     </ul>
-    
+    <a href="/skill/create">Voeg een nieuwe skill toe</a>
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

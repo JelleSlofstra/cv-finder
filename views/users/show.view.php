@@ -19,7 +19,7 @@
         <div class="col-2">Geboortedatum: </div>
         <div class="col-10"><?= $vars['user']->birthday ?></div>
     </div>   
-    <a href="/user/<?=$vars['user']->id?>/destroy">Delete</a> 
+    <a href="/user/<?=$vars['user']->id?>/destroy">Verwijder deze gebruiker</a> 
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

@@ -15,7 +15,7 @@ class HobbyController extends Controller
         $user = UserModel::load()->get($userId);
         $hobbies = HobbyModel::load()->getAllByUserId($userId);
 
-        View::render('hobbies/index.view', [
+        return View::render('hobbies/index.view', [
             'hobbies'   => $hobbies,
             'user'      => $user
         ]);
@@ -23,7 +23,7 @@ class HobbyController extends Controller
 
     public function create()
     {
-        View::render('hobbies/create.view', [
+        return View::render('hobbies/create.view', [
             'method'    => 'POST',
             'action'    => '/hobby/store'
         ]);
@@ -51,7 +51,7 @@ class HobbyController extends Controller
         $hobbyId = Helper::getIdFromUrl('hobby');
         $hobby = HobbyModel::load()->get($hobbyId);
 
-        View::render('hobbies/edit.view', [
+        return View::render('hobbies/edit.view', [
             'method'    => 'POST',
             'action'    => '/hobby/' . $hobbyId . '/update',
             'hobby'     => $hobby

@@ -14,7 +14,7 @@ class SkillController extends Controller
         $userId = Helper::getUserIdFromSession();
         $skills = SkillModel::load()->getAllByUserId($userId);
 
-        View::render('skills/index.view', [
+        return View::render('skills/index.view', [
             'skills'    => $skills,
             'user'      => UserModel::load()->get($userId)
         ]);
@@ -22,7 +22,7 @@ class SkillController extends Controller
 
     public function create()
     {
-        View::render('skills/create.view',[
+        return View::render('skills/create.view',[
             'method'    => 'POST',
             'action'    => '/skill/store'
         ]);
@@ -50,7 +50,7 @@ class SkillController extends Controller
         $skillId = Helper::getIdFromUrl('skill');
         $skill = SkillModel::load()->get($skillId);
 
-        View::Render('skills/edit.view', [
+        return View::Render('skills/edit.view', [
             'method'    => 'POST',
             'action'    => '/skill/' . $skillId .  '/update',
             'skill'     => $skill

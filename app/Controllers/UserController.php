@@ -95,7 +95,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
         
         $user = UserModel::load()->get($userId);
 

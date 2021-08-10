@@ -1,7 +1,7 @@
 <?php require 'views/partials/header.view.php' ?>
 
 <div class="main">
-    <h2>Banen van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h2>
+    <h2>Vrijwilligerswerk van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h2>
     <hr>
     <ul>            
         <?php foreach($vars['volunteerjobs'] as $volunteerjob): ?>
@@ -27,7 +27,8 @@
                 </div>
             </li>            
         <?php endforeach; ?>
-    </ul>  
+    </ul>
+    <a href="/volunteerjob/create">Voeg nieuw vrijwilligerswerk toe</a>  
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

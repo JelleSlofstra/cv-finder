@@ -22,10 +22,10 @@ $router->get('admin', 'App/Controllers/AdminController.php@index', [
 //User Routes
 //
 
-$router->get('user', 'App/Controllers/UserController.php@index', [
+$router->get('users', 'App/Controllers/UserController.php@index', [
     'show' => Permissions::class]);
 
-$router->get('user/{id}', 'App/Controllers/UserController.php@show', [
+$router->get('user', 'App/Controllers/UserController.php@show', [
     'read' => Permissions::class]);
 
 $router->get('user/{id}/edit', 'App/Controllers/UserController.php@edit', [
@@ -93,7 +93,7 @@ $router->get('volunteerjob/create', 'App/Controllers/VolunteerJobController.php@
 $router->post('volunteerjob/store', 'App/Controllers/VolunteerJobController.php@store', [
     'store' => Permissions::class]);
 
-$router->get('user/{id}/volunteerjobs', 'App/Controllers/VolunteerJobController.php@index', [
+$router->get('volunteerjobs', 'App/Controllers/VolunteerJobController.php@index', [
     'show' => Permissions::class]);
 
 $router->get('volunteerjob/{id}/edit', 'App/Controllers/VolunteerJobController.php@edit', [

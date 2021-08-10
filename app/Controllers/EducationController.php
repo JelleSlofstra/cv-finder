@@ -19,7 +19,7 @@ class EducationController extends Controller
         $educations = EducationModel::load()->getAllByUserId($userId);
         $user = UserModel::load()->get($userId);
 
-        View::render('educations/index.view',[
+        return View::render('educations/index.view',[
             'educations' => $educations,
             'user' => $user
         ]);
@@ -42,6 +42,9 @@ class EducationController extends Controller
     public function store()
     {        
         // Save post data in $education var
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $education = $_POST;
 
         // Set created_by ID and set the date of creation
@@ -78,6 +81,9 @@ class EducationController extends Controller
     public function update()
     {
         $educationId = Helper::getIdFromUrl('education');
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $education = $_POST;
 
         // Set updated_by ID and set the date of updating
