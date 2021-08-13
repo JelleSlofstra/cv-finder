@@ -87,7 +87,7 @@ class UserController extends Controller
 
         UserModel::load()->update($user, $userId);
 
-        header("Location: /user/$userId");
+        header("Location: /user");
     }
 
     /**

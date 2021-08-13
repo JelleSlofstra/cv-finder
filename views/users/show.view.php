@@ -18,9 +18,12 @@
     <div class="row"> 
         <div class="col-2">Geboortedatum: </div>
         <div class="col-10"><?= $vars['user']->birthday ?></div>
-    </div>   
-    <hr>
+    </div> 
+    <div>
+        <a href="/user/<?=$user->id?>/edit">Pas de gegevens van deze gebruiker aan</a>
+    </div>     
     <a href="/user/<?=$vars['user']->id?>/destroy">Verwijder deze gebruiker</a> 
+    <hr>
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

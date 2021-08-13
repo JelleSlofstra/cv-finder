@@ -67,12 +67,23 @@ class EducationController extends Controller
         $educationId = Helper::getIdFromUrl('education');
         $education = EducationModel::load()->get($educationId);
 
-        return View::render('educations/edit.view', [
-            'method'    => 'POST',
-            'action'    => '/education/' . $educationId . '/update',
-            'education' => $education,
-            'users'     => UserModel::load()->all(),            
-        ]);
+        if ($education->user_id == Helper::getUserIdFromSession())
+        {
+            return View::render('educations/edit.view', [
+                'method'    => 'POST',
+                'action'    => '/education/' . $educationId . '/update',
+                'education' => $education,
+                'users'     => UserModel::load()->all(),            
+            ]);
+        }
+        else
+        {
+            return View::render('errors/403.view', [
+                'message' => 'you shouldnt edit someone elses education'
+            ]);
+        }
+
+        
     }
 
     /**
@@ -112,7 +123,19 @@ class EducationController extends Controller
     public function destroy()
     {
         $educationId = Helper::getIdFromUrl('education');
-        EducationModel::load()->destroy($educationId);
+        $education = EducationModel::load()->get($educationId);
+
+        if ($education->user_id == Helper::getUserIdFromSession())
+        {
+            EducationModel::load()->destroy($educationId);
+        }
+        else
+        {
+            return view::render('errors/views', [
+                'message'   => 'You can only delete your own education'
+            ]);
+        }
+        
 
         header("Location: /educations");
     }
