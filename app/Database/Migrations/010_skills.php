@@ -29,7 +29,19 @@ return [
         'type' => 'array',
         'data' => array([
             'user_id'       => 1,
-            'name'         => 'programmeren',        
+            'name'          => 'programmeren',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 1,
+            'name'          => 'coachen',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
+        ],
+        [
+            'user_id'       => 1,
+            'name'          => 'fietsen',        
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1,
         ],
@@ -47,13 +59,13 @@ return [
         ],
         [
             'user_id'       => 2,
-            'name'         => 'programmeren',        
+            'name'          => 'programmeren',        
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 2,
         ],
         [
             'user_id'       => 2,
-            'name'         => 'trainen',        
+            'name'         => 'trainen', 
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 2,
         ],
@@ -65,7 +77,7 @@ return [
         ],
         [
             'user_id'       => 3,
-            'name'         => 'slapen',        
+            'name'          => 'naar bed gaan',        
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 3,
         ],

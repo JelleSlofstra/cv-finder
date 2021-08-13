@@ -35,13 +35,13 @@ return [
         ],
         [
             'user_id'       => 1,
-            'name'          => 'schaken',        
+            'name'          => 'schaken',    
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1,
         ],
         [
             'user_id'       => 1,
-            'name'          => 'olifanten voeren',        
+            'name'          => 'olifanten voeren',
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1,
         ],
@@ -50,6 +50,12 @@ return [
             'name'          => 'lezen',        
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 2,
+        ],
+        [
+            'user_id'       => 2,
+            'name'          => 'programmeren',        
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1,
         ],
         [
             'user_id'       => 2,
