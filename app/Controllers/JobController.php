@@ -15,11 +15,11 @@ class JobController extends Controller
      */
     public function index()
     {
-        $userId = Helper::getIdFromUrl('user');
+        $userId = Helper::getUserIdFromSession();
         $jobs = JobModel::load()->getAllByUserId($userId);
         $user = UserModel::load()->get($userId);
 
-        View::render('jobs/index.view', [
+        return View::render('jobs/index.view', [
             'jobs'  => $jobs,
             'user'  => $user
         ]);
@@ -43,18 +43,21 @@ class JobController extends Controller
     public function store()
     {
         // Save post data in $job var
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $job = $_POST;
 
         // Set created_by ID and set the date of creation
+        $job['user_id'] = Helper::getUserIdFromSession();
         $job['created_by'] = Helper::getUserIdFromSession();
         $job['created'] = date('Y-m-d H:i:s');
 
         // Save the record to the database
         JobModel::load()->store($job);
         
-        // Return to the user-overview
-        $userId = $job['user_id'];
-        header("Location: /user/$userId/jobs");
+        // Return to the job-overview
+        header("Location: /jobs");
     }
 
     /**
@@ -68,8 +71,7 @@ class JobController extends Controller
         return View::render('jobs/edit.view', [
             'method'    => 'POST',
             'action'    => '/job/' . $jobId . '/update',
-            'job'       => $job,
-            'users'     => UserModel::load()->all()
+            'job'       => $job
         ]);
     }
 
@@ -79,18 +81,21 @@ class JobController extends Controller
     public function update()
     {
         $jobId = Helper::getIdFromUrl('job');
+        if(!(int)$_POST['end_year']){
+            $_POST['end_year'] = NULL;
+        }
         $job = $_POST;
 
         // Set updated_by ID and set the date of updating
+        $job['user_id'] = Helper::getUserIdFromSession();
         $job['updated_by'] = Helper::getUserIdFromSession();
         $job['updated'] = date('Y-m-d H:i:s');
 
         // Update the record in the database
         JobModel::load()->update($job, $jobId);
 
-        // Return to the user-overview
-        $userId = $job['user_id'];
-        header("Location: /user/$userId/jobs");
+        // Return to the job-overview
+        header("Location: /jobs");
 
     }
 
@@ -108,9 +113,8 @@ class JobController extends Controller
     public function destroy()
     {
         $jobId = Helper::getIdFromUrl('job');
-        $userId = JobModel::load()->get($jobId)->user_id;
         JobModel::load()->destroy($jobId);
-        header("Location: /user/$userId/jobs");
+        header("Location: /jobs");
     }
 
 }

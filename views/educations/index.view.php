@@ -27,6 +27,8 @@
             </li>            
         <?php endforeach; ?>
     </ul>  
+    <hr>
+    <a href="/education/create">Voeg een nieuwe opleiding toe</a>
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

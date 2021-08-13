@@ -8,23 +8,20 @@ body {
     background-color: white;
 }
 
-a:link,
-a:active,
-a:visited {
-    color: teal;
+h1, h2, h3 {
+    text-align: center;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.main {
+    min-height: 500px;
 }
 
 .error-message {
     color: white;
-}
-
-header {
-    height: 100px;
-    background-color: rgb(158 210 157);
-    width: 100%;
-    color: black;
-    z-index: 1;
-    border-bottom: 1px solid #f2f2f2;
 }
 
 .center-box {
@@ -118,12 +115,11 @@ header .guitar-icon {
 }
 
 footer {
-    height: 120px;
     background-color: #2f2c2d;
     width: 100%;
-    position: absolute;
-    bottom: -1px;
     color: white;
+    position: sticky;
+    bottom: 0;
 }
 
 .overlay {

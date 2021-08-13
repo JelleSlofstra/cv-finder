@@ -27,7 +27,9 @@
                 </div>
             </li>            
         <?php endforeach; ?>
-    </ul>  
+    </ul>
+    <hr>
+    <a href="/job/create">Voeg nieuwe werkervaring toe.</a> 
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

@@ -20,7 +20,15 @@
         <div class="col-2">Geboortedatum: </div>
         <div class="col-10"><?= $user->birthday ?></div>
     </div>  
+    <div>
+        <a href="/user/<?=$user->id?>/edit">Pas de gegevens van deze gebruiker aan</a>
+    </div>  
+    <a href="/user/<?=$user->id?>/destroy">Verwijder deze gebruiker</a>
     <?php endforeach;?>
+
+    <hr>
+    <a href="/user/create">Voeg een nieuwe gebruiker toe</a>
+   
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>
