@@ -79,7 +79,7 @@ class EducationController extends Controller
         else
         {
             return View::render('errors/403.view', [
-                'message' => 'you shouldnt edit someone elses education'
+                'message' => 'Je kan alleen je eigen opleidingen aanpassen'
             ]);
         }
 
@@ -132,7 +132,7 @@ class EducationController extends Controller
         else
         {
             return view::render('errors/views', [
-                'message'   => 'You can only delete your own education'
+                'message'   => 'Je kan alleen je eigen opleidingen verwijderen'
             ]);
         }
         

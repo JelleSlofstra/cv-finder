@@ -1,5 +1,7 @@
 <?php
 
+use App\Helpers\Helper;
+
 /**
  * (var_)dump variable(s)
  * No params, just get vars from func_get_args function
@@ -93,4 +95,13 @@ function exception_handler($exception)
     $message = $exception->getMessage();
 
     require 'views/errors/exceptions.view.php';
+}
+
+function getFullNameFromSession()
+{
+    if (Helper::isLoggedIn()) {
+        return (string)$_SESSION['user']['full_name'];
+    }
+
+    return false;
 }

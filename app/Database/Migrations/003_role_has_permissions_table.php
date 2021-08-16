@@ -24,6 +24,7 @@ return [
 
     'relations' => [
         'ALTER TABLE `role_has_permission` ADD FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;',
+        'ALTER TABLE `role_has_permission` ADD FOREIGN KEY (`permission_id`) REFERENCES `permissions`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;',
         'ALTER TABLE `role_has_permission` ADD FOREIGN KEY (`created_by`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;',
         'ALTER TABLE `role_has_permission` ADD FOREIGN KEY (`updated_by`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;',
         'ALTER TABLE `role_has_permission` ADD FOREIGN KEY (`deleted_by`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;',
@@ -56,6 +57,20 @@ return [
         [
             'role_id'       => 2,
             'permission_id' => 4,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 5,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 3,
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1
         ]),
