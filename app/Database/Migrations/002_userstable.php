@@ -40,7 +40,7 @@ return [
             'last_name'  => 'Versteeg',
             'email'      => 'toby@codegorilla.nl',
             'password'   => password_hash('Gorilla1!', PASSWORD_DEFAULT),
-            'role'       => 1,
+            'role'       => 2,
             'country'    => 156,
             'city'       => 'Groningen',
             'birthday'   => '1970-05-17',

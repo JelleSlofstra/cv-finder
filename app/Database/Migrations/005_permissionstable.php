@@ -44,6 +44,12 @@ return [
         ],
 
         [
+            'name'       => 'edit_user',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
             'name'       => 'read_user',
             'created'    => date('Y-m-d H:i:s'),
             'created_by' => 1
