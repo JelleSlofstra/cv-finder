@@ -68,11 +68,20 @@ class JobController extends Controller
         $jobId = Helper::getIdFromUrl('job');
         $job = JobModel::load()->get($jobId);
 
-        return View::render('jobs/edit.view', [
-            'method'    => 'POST',
-            'action'    => '/job/' . $jobId . '/update',
-            'job'       => $job
-        ]);
+        if ($job->user_id == Helper::getUserIdFromSession())
+        {
+            return View::render('jobs/edit.view', [
+                'method'    => 'POST',
+                'action'    => '/job/' . $jobId . '/update',
+                'job'       => $job
+            ]);
+        }
+        else
+        {
+            return View::render('errors/403.view', [
+                'message'   => 'Je kan alleen je eigen werkervaring aanpassen'
+            ]);
+        }        
     }
 
     /**
@@ -113,8 +122,20 @@ class JobController extends Controller
     public function destroy()
     {
         $jobId = Helper::getIdFromUrl('job');
-        JobModel::load()->destroy($jobId);
-        header("Location: /jobs");
+        $job = JobModel::load()->get($jobId);
+
+        if ($job->user_id == Helper::getUserIdFromSession())
+        {
+            JobModel::load()->destroy($jobId);
+            header("Location: /jobs");
+        }
+        else
+        {
+            return View::render('errors/403.view',[
+                'message' => 'Je kan alleen je eigen werkervaring verwijderen'
+            ]);
+        }        
+        
     }
 
 }

@@ -50,11 +50,22 @@ class SkillController extends Controller
         $skillId = Helper::getIdFromUrl('skill');
         $skill = SkillModel::load()->get($skillId);
 
-        return View::Render('skills/edit.view', [
-            'method'    => 'POST',
-            'action'    => '/skill/' . $skillId .  '/update',
-            'skill'     => $skill
-        ]);
+        if($skill->user_id == Helper::getUserIdFromSession())
+        {
+            return View::render('skills/edit.view', [
+                'method'    => 'POST',
+                'action'    => '/skill/' . $skillId .  '/update',
+                'skill'     => $skill
+            ]);
+        }
+        else
+        {
+            return View::render('errors/403.view',[
+                'message' => 'Je mag alleen je eigen skills aanpassen'
+            ]);
+        }
+
+        
     }
 
     public function update()
@@ -78,8 +89,18 @@ class SkillController extends Controller
     public function destroy()
     {
         $skillId = Helper::getIdFromUrl('skill');
-        SkillModel::load()->destroy($skillId);
-        
-        header("Location: /skills");
+        $skill = SkillModel::load()->get($skillId);
+
+        if ($skill->user_id == Helper::getUserIdFromSession())
+        {
+            SkillModel::load()->destroy($skillId);        
+            header("Location: /skills");
+        }
+        else
+        {
+            return View::render('errors/403.view',[
+                'message'   => 'Je mag alleen je eigen skills verwijderen'    
+            ]);
+        }        
     }
 }

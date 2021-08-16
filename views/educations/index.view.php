@@ -20,8 +20,8 @@
                         <?= $education->info ?>
                     </div>
                     <div class="col-3">
-                        <a href="/education/<?= $education->id?>/edit">Edit</a>
-                        <a href="/education/<?= $education->id?>/destroy">Delete</a>
+                        <a href="/education/<?= $education->id?>/edit">Aanpassen</a>
+                        <a href="/education/<?= $education->id?>/destroy">Verwijderen</a>
                     </div>
                 </div>
             </li>            

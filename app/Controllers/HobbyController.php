@@ -51,7 +51,7 @@ class HobbyController extends Controller
         $hobbyId = Helper::getIdFromUrl('hobby');
         $hobby = HobbyModel::load()->get($hobbyId);
 
-        if ($hobbyId->user_id == Helper::getUserIdFromSession())
+        if ($hobby->user_id == Helper::getUserIdFromSession())
         {
             return View::render('hobbies/edit.view', [
                 'method'    => 'POST',
@@ -84,8 +84,9 @@ class HobbyController extends Controller
     public function destroy()
     {
         $hobbyId = Helper::getIdFromUrl('hobby');
+        $hobby = HobbyModel::load()->get($hobbyId);
 
-        if ($hobbyId->user_id == Helper::getUserIdFromSession())
+        if ($hobby->user_id == Helper::getUserIdFromSession())
         {
             HobbyModel::load()->destroy($hobbyId);
         }

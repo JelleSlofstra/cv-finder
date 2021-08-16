@@ -131,7 +131,7 @@ class EducationController extends Controller
         }
         else
         {
-            return view::render('errors/views', [
+            return view::render('errors/403.view', [
                 'message'   => 'Je kan alleen je eigen opleidingen verwijderen'
             ]);
         }

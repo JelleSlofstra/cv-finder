@@ -51,7 +51,7 @@ class UserController extends Controller
         $userId = UserModel::load()->store($user);
         
         //Return to the user-overview
-        header("Location: /user/$userId");
+        header("Location: /admin");
     }
 
     /**
@@ -60,15 +60,26 @@ class UserController extends Controller
     public function edit()
     {
         $userId = Helper::getIdFromUrl('user');
-        
+        $role = UserModel::load()->role(Helper::getUserIdFromSession());
         $user = UserModel::load()->get($userId);
 
-        return View::render('users/edit.view', [
-            'method'    => 'POST',
-            'action'    => '/user/' . $userId . '/update',
-            'user'      => $user,
-            'roles'     => RoleModel::load()->all(),
-        ]);
+        if ($role === 1 || $role === 2 || $userId === Helper::getUserIdFromSession())
+        {
+            return View::render('users/edit.view', [
+                'method'    => 'POST',
+                'action'    => '/user/' . $userId . '/update',
+                'user'      => $user,
+                'roles'     => RoleModel::load()->all(),
+            ]);
+        }
+        else
+        {
+            return View::render('errors/views', [
+                'message'   => 'Je mag de gegevens van een andere gebruiker niet aanpassen'
+            ]);
+        }
+
+        
     }
 
     /**
@@ -112,7 +123,7 @@ class UserController extends Controller
         $userId = Helper::getIdFromUrl('user');
 
         UserModel::load()->destroy($userId);
-        header("Location: /user");
+        header("Location: /admin");
     }
 
 }

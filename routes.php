@@ -28,7 +28,8 @@ $router->get('user', 'App/Controllers/UserController.php@show', [
 $router->get('user/{id}/edit', 'App/Controllers/UserController.php@edit', [
     'edit' => Permissions::class]);
 
-$router->get('user/create', 'App/Controllers/UserController.php@create');
+$router->get('user/create', 'App/Controllers/UserController.php@create', [
+    'create' => Permissions::class]);
 
 $router->post('user/{id}/update', 'App/Controllers/UserController.php@update', [
     'update' => Permissions::class]);

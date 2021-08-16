@@ -21,8 +21,8 @@
                         <?= $volunteerjob->info ?>
                     </div>
                     <div class="col-3">
-                        <a href="/volunteerjob/<?= $volunteerjob->id?>/edit">Edit</a>
-                        <a href="/volunteerjob/<?= $volunteerjob->id?>/destroy">Delete</a>
+                        <a href="/volunteerjob/<?= $volunteerjob->id?>/edit">Aanpassen</a>
+                        <a href="/volunteerjob/<?= $volunteerjob->id?>/destroy">Verwijderen</a>
                     </div>
                 </div>
             </li>            

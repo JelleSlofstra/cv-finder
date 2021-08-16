@@ -71,12 +71,21 @@ class VolunteerJobController extends Controller
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
         $volunteerJob = VolunteerJobModel::load()->get($volunteerJobId);
 
-        return View::render('volunteerjobs/edit.view', [
-            'method'        => 'POST',
-            'action'        => '/volunteerjob/' . $volunteerJobId . '/update',
-            'volunteerjob'  => $volunteerJob,
-            'users'         => UserModel::load()->all()
-        ]);
+        if ($volunteerJob->user_id == Helper::getUserIdFromSession())
+        {
+            return View::render('volunteerjobs/edit.view', [
+                'method'        => 'POST',
+                'action'        => '/volunteerjob/' . $volunteerJobId . '/update',
+                'volunteerjob'  => $volunteerJob,
+                'users'         => UserModel::load()->all()
+            ]);
+        }
+        else
+        {
+            return View::render('errors/403.view', [
+                'message'   => 'Je mag alleen je eigen vrijwilligerswerk aanpassen'
+            ]);
+        }
     }
 
     /**
@@ -112,7 +121,17 @@ class VolunteerJobController extends Controller
     {
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
         $userId = VolunteerJobModel::load()->get($volunteerJobId)->user_id;
-        VolunteerJobModel::load()->destroy($volunteerJobId);
-        header("Location: /volunteerjobs");
+
+        if ($userId == Helper::getUserIdFromSession())
+        {
+            VolunteerJobModel::load()->destroy($volunteerJobId);
+            header("Location: /volunteerjobs");
+        }
+        else
+        {
+            return View::render('errors/403.view', [
+                'message'   => 'Je mag alleen je eigen vrijwilligerswerk verwijderen'
+            ]);
+        }
     }
 }

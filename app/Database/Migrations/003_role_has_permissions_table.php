@@ -73,6 +73,13 @@ return [
             'permission_id' => 3,
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 4,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
         ]),
     ],
 ];

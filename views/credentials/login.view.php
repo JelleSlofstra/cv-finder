@@ -1,3 +1,5 @@
+<?php require 'views/partials/header.view.php' ?>
+
 <div class="login-overlay">
     <div class="center-box login-form">
         <div class="mb-3">
