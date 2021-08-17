@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\JobModel;
 use App\Models\UserModel;
 use App\Libraries\View;
+use App\Middleware\Permissions;
 
 class JobController extends Controller
 {
@@ -19,7 +20,7 @@ class JobController extends Controller
         $jobs = JobModel::load()->getAllByUserId($userId);
         $user = UserModel::load()->get($userId);
 
-        return View::render('jobs/index.view', [
+        View::render('jobs/index.view', [
             'jobs'  => $jobs,
             'user'  => $user
         ]);
@@ -30,10 +31,9 @@ class JobController extends Controller
      */
     public function create()
     {  
-        return View::render('jobs/create.view', [
+        View::render('jobs/create.view', [
             'method'    => 'POST',
-            'action'    => '/job/store',
-            'users'     => UserModel::load()->all()
+            'action'    => '/job/store'
         ]);
     }
 
@@ -57,7 +57,7 @@ class JobController extends Controller
         JobModel::load()->store($job);
         
         // Return to the job-overview
-        header("Location: /jobs");
+        header("Location: /job");
     }
 
     /**
@@ -68,20 +68,13 @@ class JobController extends Controller
         $jobId = Helper::getIdFromUrl('job');
         $job = JobModel::load()->get($jobId);
 
-        if ($job->user_id == Helper::getUserIdFromSession())
-        {
-            return View::render('jobs/edit.view', [
-                'method'    => 'POST',
-                'action'    => '/job/' . $jobId . '/update',
-                'job'       => $job
-            ]);
-        }
-        else
-        {
-            return View::render('errors/403.view', [
-                'message'   => 'Je kan alleen je eigen werkervaring aanpassen'
-            ]);
-        }        
+        Permissions::checkIdsFromSessionAndUrl($job->user_id);
+
+        View::render('jobs/edit.view', [
+            'method'    => 'POST',
+            'action'    => '/job/' . $jobId . '/update',
+            'job'       => $job
+        ]);    
     }
 
     /**
@@ -104,7 +97,7 @@ class JobController extends Controller
         JobModel::load()->update($job, $jobId);
 
         // Return to the job-overview
-        header("Location: /jobs");
+        header("Location: /job");
 
     }
 
@@ -124,18 +117,10 @@ class JobController extends Controller
         $jobId = Helper::getIdFromUrl('job');
         $job = JobModel::load()->get($jobId);
 
-        if ($job->user_id == Helper::getUserIdFromSession())
-        {
-            JobModel::load()->destroy($jobId);
-            header("Location: /jobs");
-        }
-        else
-        {
-            return View::render('errors/403.view',[
-                'message' => 'Je kan alleen je eigen werkervaring verwijderen'
-            ]);
-        }        
-        
+        Permissions::checkIdsFromSessionAndUrl($job->user_id);
+
+        JobModel::load()->destroy($jobId);
+        header("Location: /job");    
     }
 
 }

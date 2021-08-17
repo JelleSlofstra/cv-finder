@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\SkillModel;
 use App\Models\UserModel;
 use App\Libraries\View;
+use App\Middleware\Permissions;
 
 class SkillController extends Controller
 {
@@ -14,7 +15,7 @@ class SkillController extends Controller
         $userId = Helper::getUserIdFromSession();
         $skills = SkillModel::load()->getAllByUserId($userId);
 
-        return View::render('skills/index.view', [
+        View::render('skills/index.view', [
             'skills'    => $skills,
             'user'      => UserModel::load()->get($userId)
         ]);
@@ -22,7 +23,7 @@ class SkillController extends Controller
 
     public function create()
     {
-        return View::render('skills/create.view',[
+        View::render('skills/create.view',[
             'method'    => 'POST',
             'action'    => '/skill/store'
         ]);
@@ -42,7 +43,7 @@ class SkillController extends Controller
         SkillModel::load()->store($skill);
 
         //return to the skill-list of this user
-        header("Location: /skills");
+        header("Location: /skill");
     }
 
     public function edit()
@@ -50,21 +51,13 @@ class SkillController extends Controller
         $skillId = Helper::getIdFromUrl('skill');
         $skill = SkillModel::load()->get($skillId);
 
-        if($skill->user_id == Helper::getUserIdFromSession())
-        {
-            return View::render('skills/edit.view', [
-                'method'    => 'POST',
-                'action'    => '/skill/' . $skillId .  '/update',
-                'skill'     => $skill
-            ]);
-        }
-        else
-        {
-            return View::render('errors/403.view',[
-                'message' => 'Je mag alleen je eigen skills aanpassen'
-            ]);
-        }
-
+        Permissions::checkIdsFromSessionAndUrl($skill->user_id);
+        
+        View::render('skills/edit.view', [
+            'method'    => 'POST',
+            'action'    => '/skill/' . $skillId .  '/update',
+            'skill'     => $skill
+        ]);
         
     }
 
@@ -83,7 +76,7 @@ class SkillController extends Controller
         SkillModel::load()->update($skill, $skillId);
 
         //return to the skill-list of this user
-        header("Location: /skills");
+        header("Location: /skill");
     }
 
     public function destroy()
@@ -91,16 +84,9 @@ class SkillController extends Controller
         $skillId = Helper::getIdFromUrl('skill');
         $skill = SkillModel::load()->get($skillId);
 
-        if ($skill->user_id == Helper::getUserIdFromSession())
-        {
-            SkillModel::load()->destroy($skillId);        
-            header("Location: /skills");
-        }
-        else
-        {
-            return View::render('errors/403.view',[
-                'message'   => 'Je mag alleen je eigen skills verwijderen'    
-            ]);
-        }        
+        Permissions::checkIdsFromSessionAndUrl($skill->user_id);
+
+        SkillModel::load()->destroy($skillId);        
+        header("Location: /skill");     
     }
 }

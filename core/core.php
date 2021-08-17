@@ -97,6 +97,9 @@ function exception_handler($exception)
     require 'views/errors/exceptions.view.php';
 }
 
+/**
+ * If someone is logged in, returns the users full name
+ */
 function getFullNameFromSession()
 {
     if (Helper::isLoggedIn()) {
@@ -105,3 +108,15 @@ function getFullNameFromSession()
 
     return false;
 }
+
+/**
+ * Check if there's a session, indicating that a user is logged in
+ */
+function isLoggedIn()
+{
+    return isset($_SESSION) && 
+        isset($_SESSION['user']) && 
+        isset($_SESSION['user']['uid']) &&
+        (int)$_SESSION['user']['uid'] > 0 ? true : false;
+}
+

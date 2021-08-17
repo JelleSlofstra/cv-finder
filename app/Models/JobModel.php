@@ -2,10 +2,6 @@
 
 namespace App\Models;
 
-use App\Libraries\MySql;
-use App\Libraries\QueryBuilder;
-use PDO;
-
 class JobModel extends Model
 {
     // Name of the table

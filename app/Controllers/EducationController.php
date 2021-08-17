@@ -6,12 +6,13 @@ use App\Helpers\Helper;
 use App\Models\EducationModel;
 use App\Models\UserModel;
 use App\Libraries\View;
+use App\Middleware\Permissions;
 
 class EducationController extends Controller
 {
 
     /**
-     * Show's a list of educations for one user
+     * Shows a list of educations for one user
      */
     public function index()
     {
@@ -19,7 +20,7 @@ class EducationController extends Controller
         $educations = EducationModel::load()->getAllByUserId($userId);
         $user = UserModel::load()->get($userId);
 
-        return View::render('educations/index.view',[
+        View::render('educations/index.view',[
             'educations' => $educations,
             'user' => $user
         ]);
@@ -30,7 +31,7 @@ class EducationController extends Controller
      */
     public function create()
     {   
-        return View::render('educations/create.view', [
+        View::render('educations/create.view', [
             'method'    => 'POST',
             'action'    => '/education/store'
         ]);
@@ -56,7 +57,7 @@ class EducationController extends Controller
         EducationModel::load()->store($education);
         
         // Return to the user-overview
-        header("Location: /educations");
+        header("Location: /education");
     }
 
     /**
@@ -67,23 +68,13 @@ class EducationController extends Controller
         $educationId = Helper::getIdFromUrl('education');
         $education = EducationModel::load()->get($educationId);
 
-        if ($education->user_id == Helper::getUserIdFromSession())
-        {
-            return View::render('educations/edit.view', [
-                'method'    => 'POST',
-                'action'    => '/education/' . $educationId . '/update',
-                'education' => $education,
-                'users'     => UserModel::load()->all(),            
-            ]);
-        }
-        else
-        {
-            return View::render('errors/403.view', [
-                'message' => 'Je kan alleen je eigen opleidingen aanpassen'
-            ]);
-        }
+        Permissions::checkIdsFromSessionAndUrl($education->user_id);
 
-        
+        View::render('educations/edit.view', [
+            'method'    => 'POST',
+            'action'    => '/education/' . $educationId . '/update',
+            'education' => $education          
+        ]);        
     }
 
     /**
@@ -106,38 +97,21 @@ class EducationController extends Controller
         EducationModel::load()->update($education, $educationId);
 
         // Return to the user-overview
-        header("Location: /educations");
+        header("Location: /education");
     }
 
     /**
-     * Show education record
-     */
-    public function show()
-    {
-       
-    }
-
-    /**
-     * Archive a education record into the database (soft delete)
+     * Archive a education record in the database (soft delete)
      */
     public function destroy()
     {
         $educationId = Helper::getIdFromUrl('education');
         $education = EducationModel::load()->get($educationId);
 
-        if ($education->user_id == Helper::getUserIdFromSession())
-        {
-            EducationModel::load()->destroy($educationId);
-        }
-        else
-        {
-            return view::render('errors/403.view', [
-                'message'   => 'Je kan alleen je eigen opleidingen verwijderen'
-            ]);
-        }
+        Permissions::checkIdsFromSessionAndUrl($education->user_id);
         
-
-        header("Location: /educations");
+        EducationModel::load()->destroy($educationId); 
+        header("Location: /education");
     }
 
 }

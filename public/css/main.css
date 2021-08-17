@@ -12,16 +12,16 @@ h1, h2, h3 {
     text-align: center;
 }
 
+.navbar-nav {
+    color : white;    
+}
+
 .purple {
     background-color: purple;
 }
 
 .main {
     min-height: 500px;
-}
-
-.error-message {
-    color: white;
 }
 
 .center-box {

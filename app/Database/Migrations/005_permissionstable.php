@@ -38,19 +38,13 @@ return [
         ],
 
         [
-            'name'       => 'create_user',
-            'created'    => date('Y-m-d H:i:s'),
-            'created_by' => 1
-        ],
-
-        [
-            'name'       => 'edit_user',
-            'created'    => date('Y-m-d H:i:s'),
-            'created_by' => 1
-        ],
-
-        [
             'name'       => 'read_user',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'create_user',
             'created'    => date('Y-m-d H:i:s'),
             'created_by' => 1
         ],
@@ -63,6 +57,156 @@ return [
 
         [
             'name'       => 'delete_user',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'read_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'create_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'update_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_education',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'read_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'create_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'update_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_job',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_volunteerjob',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'read_volunteerjob',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'create_volunteerjob',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'update_volunteerjob',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_volunteerjob',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'read_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'create_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'update_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_skill',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'show_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'read_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'create_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+        
+        [
+            'name'       => 'update_hobby',
+            'created'    => date('Y-m-d H:i:s'),
+            'created_by' => 1
+        ],
+
+        [
+            'name'       => 'delete_hobby',
             'created'    => date('Y-m-d H:i:s'),
             'created_by' => 1
         ]),

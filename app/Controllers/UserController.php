@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\UserModel;
 use App\Libraries\View;
 use App\Models\RoleModel;
+use App\Middleware\Permissions;
 
 class UserController extends Controller
 {
@@ -60,26 +61,16 @@ class UserController extends Controller
     public function edit()
     {
         $userId = Helper::getIdFromUrl('user');
-        $role = UserModel::load()->role(Helper::getUserIdFromSession());
         $user = UserModel::load()->get($userId);
 
-        if ($role === 1 || $role === 2 || $userId === Helper::getUserIdFromSession())
-        {
-            return View::render('users/edit.view', [
-                'method'    => 'POST',
-                'action'    => '/user/' . $userId . '/update',
-                'user'      => $user,
-                'roles'     => RoleModel::load()->all(),
-            ]);
-        }
-        else
-        {
-            return View::render('errors/views', [
-                'message'   => 'Je mag de gegevens van een andere gebruiker niet aanpassen'
-            ]);
-        }
+        Permissions::checkIdsFromSessionAndUrl($userId);
 
-        
+        View::render('users/edit.view', [
+            'method'    => 'POST',
+            'action'    => '/user/' . $userId . '/update',
+            'user'      => $user,
+            'roles'     => RoleModel::load()->all(),
+        ]);                
     }
 
     /**
@@ -121,6 +112,8 @@ class UserController extends Controller
     public function destroy()
     {
         $userId = Helper::getIdFromUrl('user');
+
+        Permissions::checkIdsFromSessionAndUrl($userId);
 
         UserModel::load()->destroy($userId);
         header("Location: /admin");

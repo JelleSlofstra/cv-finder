@@ -69,8 +69,183 @@ return [
         ],
 
         [
+            'role_id'       => 2,
+            'permission_id' => 6,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 7,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 8,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 9,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 10,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 11,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 12,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 13,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 14,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 15,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 16,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 17,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 18,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 19,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 20,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 21,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 22,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 23,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 24,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 25,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 26,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 27,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 28,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 2,
+            'permission_id' => 29,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 2,
+            'permission_id' => 30,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
             'role_id'       => 3,
-            'permission_id' => 3,
+            'permission_id' => 2,
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1
         ],
@@ -78,6 +253,181 @@ return [
         [
             'role_id'       => 3,
             'permission_id' => 4,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 6,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 7,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 8,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 9,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 10,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 11,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 12,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 13,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 14,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 15,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 16,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 17,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 18,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 19,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 20,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 21,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 22,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 23,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 24,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 25,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 26,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 27,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 28,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+        
+        [
+            'role_id'       => 3,
+            'permission_id' => 29,
+            'created'       => date('Y-m-d H:i:s'),
+            'created_by'    => 1
+        ],
+
+        [
+            'role_id'       => 3,
+            'permission_id' => 30,
             'created'       => date('Y-m-d H:i:s'),
             'created_by'    => 1
         ]),
