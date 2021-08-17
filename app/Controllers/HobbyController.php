@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\HobbyModel;
 use App\Models\UserModel;
 use App\Libraries\View;
+use App\Middleware\Permissions;
 
 class HobbyController extends Controller
 {
@@ -15,7 +16,7 @@ class HobbyController extends Controller
         $user = UserModel::load()->get($userId);
         $hobbies = HobbyModel::load()->getAllByUserId($userId);
 
-        return View::render('hobbies/index.view', [
+        View::render('hobbies/index.view', [
             'hobbies'   => $hobbies,
             'user'      => $user
         ]);
@@ -23,7 +24,7 @@ class HobbyController extends Controller
 
     public function create()
     {
-        return View::render('hobbies/create.view', [
+        View::render('hobbies/create.view', [
             'method'    => 'POST',
             'action'    => '/hobby/store'
         ]);
@@ -43,7 +44,7 @@ class HobbyController extends Controller
         HobbyModel::load()->store($hobby);
 
         //return to the hobby-overview
-        header("Location: /hobbies");
+        header("Location: /hobby");
     }
 
     public function edit()
@@ -51,20 +52,14 @@ class HobbyController extends Controller
         $hobbyId = Helper::getIdFromUrl('hobby');
         $hobby = HobbyModel::load()->get($hobbyId);
 
-        if ($hobbyId->user_id == Helper::getUserIdFromSession())
-        {
-            return View::render('hobbies/edit.view', [
-                'method'    => 'POST',
-                'action'    => '/hobby/' . $hobbyId . '/update',
-                'hobby'     => $hobby
-            ]);
-        }
-        else
-        {
-            return View::render('errors/403.view', [
-                'message' => 'Je kan alleen je eigen hobbys aanpassen'
-            ]);
-        }        
+        Permissions::checkIdsFromSessionAndUrl($hobby->user_id);
+       
+        View::render('hobbies/edit.view', [
+            'method'    => 'POST',
+            'action'    => '/hobby/' . $hobbyId . '/update',
+            'hobby'     => $hobby
+        ]);
+              
     }
 
     public function update()
@@ -78,26 +73,16 @@ class HobbyController extends Controller
 
         HobbyModel::load()->update($hobby, $hobbyId);
 
-        header("Location: /hobbies");
+        header("Location: /hobby");
     }
 
     public function destroy()
     {
         $hobbyId = Helper::getIdFromUrl('hobby');
+        $hobby = HobbyModel::load()->get($hobbyId);
 
-        if ($hobbyId->user_id == Helper::getUserIdFromSession())
-        {
-            HobbyModel::load()->destroy($hobbyId);
-        }
-        else
-        {
-            return View::render('errors/403.view', [
-                'message' => 'Je kan alleen je eigen hobbys verwijderen'
-            ]);
-        }
-
-
-
-        header("Location: /hobbies");
+        Permissions::checkIdsFromSessionAndUrl($hobby->user_id);
+        HobbyModel::load()->destroy($hobbyId);
+        header("Location: /hobby");
     }
 }

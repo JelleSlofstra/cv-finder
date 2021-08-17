@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\VolunteerJobModel;
 use App\Models\UserModel;
 use App\Libraries\View;
+use App\Middleware\Permissions;
 
 class VolunteerJobController extends Controller
 {
@@ -20,7 +21,7 @@ class VolunteerJobController extends Controller
         $user = UserModel::load()->get($userId);
 
         //Render the view with this information
-        return View::render('volunteerjobs/index.view', [
+        View::render('volunteerjobs/index.view', [
             'volunteerjobs' => $volunteerJobs,
             'user'          => $user
         ]);
@@ -31,11 +32,10 @@ class VolunteerJobController extends Controller
      */
     public function create()
     {
-        //open a form with information about the Method, action and users 
-        return View::render('volunteerjobs/create.view', [
+        //open a form with information about the Method, action
+        View::render('volunteerjobs/create.view', [
             'method'    => 'POST',
-            'action'    => '/volunteerjob/store',
-            'users' => UserModel::load()->all()
+            'action'    => '/volunteerjob/store'
         ]);
     }
     
@@ -60,7 +60,7 @@ class VolunteerJobController extends Controller
         
         // Return to the user-overview        
         $userId = $volunteerJob['user_id'];
-        header("Location: /volunteerjobs");
+        header("Location: /volunteerjob");
     }
 
     /**
@@ -71,11 +71,12 @@ class VolunteerJobController extends Controller
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
         $volunteerJob = VolunteerJobModel::load()->get($volunteerJobId);
 
-        return View::render('volunteerjobs/edit.view', [
+        Permissions::checkIdsFromSessionAndUrl($volunteerJob->user_id);
+
+        View::render('volunteerjobs/edit.view', [
             'method'        => 'POST',
             'action'        => '/volunteerjob/' . $volunteerJobId . '/update',
-            'volunteerjob'  => $volunteerJob,
-            'users'         => UserModel::load()->all()
+            'volunteerjob'  => $volunteerJob
         ]);
     }
 
@@ -100,7 +101,7 @@ class VolunteerJobController extends Controller
 
         // Return to the user-overview
         $userId = $volunteerJob['user_id'];
-        header("Location: /volunteerjobs");
+        header("Location: /volunteerjob");
 
     }
 
@@ -111,8 +112,12 @@ class VolunteerJobController extends Controller
     public function destroy()
     {
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
-        $userId = VolunteerJobModel::load()->get($volunteerJobId)->user_id;
+        $volunteerJob = VolunteerJobModel::load()->get($volunteerJobId);
+
+        Permissions::checkIdsFromSessionAndUrl($volunteerJob->user_id);
+        
         VolunteerJobModel::load()->destroy($volunteerJobId);
-        header("Location: /volunteerjobs");
+        header("Location: /volunteerjob");
+        
     }
 }

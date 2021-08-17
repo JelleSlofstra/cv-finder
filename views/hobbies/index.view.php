@@ -9,8 +9,8 @@
                 <div class="row">
                     <div class="col-6"><?=$hobby->name?></div>
                     <div class="col-6">
-                        <a href="hobby/<?=$hobby->id?>/edit">Edit</a>
-                        <a href="hobby/<?=$hobby->id?>/destroy">Delete</a>
+                        <a href="hobby/<?=$hobby->id?>/edit">Aanpassen</a>
+                        <a href="hobby/<?=$hobby->id?>/destroy">Verwijderen</a>
                     </div>
                 </div>
             </li>

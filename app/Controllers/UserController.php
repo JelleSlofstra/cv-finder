@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\UserModel;
 use App\Libraries\View;
 use App\Models\RoleModel;
+use App\Middleware\Permissions;
 
 class UserController extends Controller
 {
@@ -51,7 +52,7 @@ class UserController extends Controller
         $userId = UserModel::load()->store($user);
         
         //Return to the user-overview
-        header("Location: /user/$userId");
+        header("Location: /admin");
     }
 
     /**
@@ -60,15 +61,16 @@ class UserController extends Controller
     public function edit()
     {
         $userId = Helper::getIdFromUrl('user');
-        
         $user = UserModel::load()->get($userId);
 
-        return View::render('users/edit.view', [
+        Permissions::checkIdsFromSessionAndUrl($userId);
+
+        View::render('users/edit.view', [
             'method'    => 'POST',
             'action'    => '/user/' . $userId . '/update',
             'user'      => $user,
             'roles'     => RoleModel::load()->all(),
-        ]);
+        ]);                
     }
 
     /**
@@ -111,8 +113,10 @@ class UserController extends Controller
     {
         $userId = Helper::getIdFromUrl('user');
 
+        Permissions::checkIdsFromSessionAndUrl($userId);
+
         UserModel::load()->destroy($userId);
-        header("Location: /user");
+        header("Location: /admin");
     }
 
 }

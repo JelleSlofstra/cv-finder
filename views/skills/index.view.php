@@ -11,8 +11,8 @@
                         <?=$skill->name?>
                     </div>
                     <div class="col-6">
-                        <a href="/skill/<?= $skill->id?>/edit">Edit</a>
-                        <a href="/skill/<?= $skill->id?>/destroy">Delete</a>
+                        <a href="/skill/<?= $skill->id?>/edit">Aanpassen</a>
+                        <a href="/skill/<?= $skill->id?>/destroy">Verwijderen</a>
                     </div>
                 </div> 
             </li>                       

@@ -19,10 +19,8 @@
         <div class="col-2">Geboortedatum: </div>
         <div class="col-10"><?= $vars['user']->birthday ?></div>
     </div> 
-    <div>
-        <a href="/user/<?=$user->id?>/edit">Pas de gegevens van deze gebruiker aan</a>
-    </div>     
-    <a href="/user/<?=$vars['user']->id?>/destroy">Verwijder deze gebruiker</a> 
+    
+    <a href="/user/<?=$vars['user']->id?>/edit">Pas de gegevens van deze gebruiker aan</a>
     <hr>
 </div>
 

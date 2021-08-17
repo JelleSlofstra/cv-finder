@@ -1,7 +1,7 @@
 <?php require 'views/partials/header.view.php' ?>
 
 <div class="main">
-    <h2>Banen van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h2>
+    <h2>Werkervaring van <?=$vars['user']->first_name?> <?=$vars['user']->last_name?></h2>
     <hr>
     <ul>            
         <?php foreach($vars['jobs'] as $job): ?>
@@ -21,8 +21,8 @@
                         <?= $job->info ?>
                     </div>
                     <div class="col-3">
-                        <a href="/job/<?= $job->id?>/edit">Edit</a>
-                        <a href="/job/<?= $job->id?>/destroy">Delete</a>
+                        <a href="/job/<?= $job->id?>/edit">Aanpassen</a>
+                        <a href="/job/<?= $job->id?>/destroy">Verwijderen</a>
                     </div>
                 </div>
             </li>            

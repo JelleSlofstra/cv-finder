@@ -2,10 +2,6 @@
 
 namespace App\Models;
 
-use App\Libraries\MySql;
-use App\Libraries\QueryBuilder;
-use PDO;
-
 class VolunteerJobModel extends Model
 {
     // Name of the table

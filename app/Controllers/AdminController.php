@@ -16,7 +16,7 @@ class AdminController
         $role = UserModel::load()->role($userId);
         
         if ($role===1||$role===2) {
-            return View::render('admin/main.view', [
+            View::render('admin/main.view', [
                 'users'     => $users
             ]);
         }
