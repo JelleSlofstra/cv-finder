@@ -51,5 +51,5 @@
 </header>
 
 <div class="row">
-   <div class="col-1 purple"></div>
+   <div class="col-1 sidebar"></div>
    <div class="col-10">

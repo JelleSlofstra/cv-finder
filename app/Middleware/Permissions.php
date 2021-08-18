@@ -89,21 +89,4 @@ class Permissions
         }
     }
 
-    /**
-	 * Check whether the user has acces to changing this entry, has acces when it is his own data or he is admin or superadmin 
-	 * @param $userIdFromModel (int)
-	 */
-	public static function checkIdsFromSessionAndUrl($userIdFromModel)
-	{
-		$userIdFromSession = Helper::getUserIdFromSession();
-		$userRole = UserModel::load()->role($userIdFromSession, true);
-
-		if((int)$userIdFromModel!==$userIdFromSession && $userRole !== 'super-admin')
-		{
-			die(View::render('errors/403.view', [
-                'message' => 'Je kan alleen je eigen data aanpassen/verwijderen'
-            ]));
-		}
-	}
-
 }

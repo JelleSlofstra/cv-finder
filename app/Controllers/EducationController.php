@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Models\EducationModel;
 use App\Models\UserModel;
 use App\Libraries\View;
-use App\Middleware\Permissions;
 
 class EducationController extends Controller
 {
@@ -68,7 +67,7 @@ class EducationController extends Controller
         $educationId = Helper::getIdFromUrl('education');
         $education = EducationModel::load()->get($educationId);
 
-        Permissions::checkIdsFromSessionAndUrl($education->user_id);
+        Helper::checkIdsFromSessionAndUrl($education->user_id);
 
         View::render('educations/edit.view', [
             'method'    => 'POST',
@@ -108,7 +107,7 @@ class EducationController extends Controller
         $educationId = Helper::getIdFromUrl('education');
         $education = EducationModel::load()->get($educationId);
 
-        Permissions::checkIdsFromSessionAndUrl($education->user_id);
+        Helper::checkIdsFromSessionAndUrl($education->user_id);
         
         EducationModel::load()->destroy($educationId); 
         header("Location: /education");

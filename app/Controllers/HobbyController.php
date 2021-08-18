@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Models\HobbyModel;
 use App\Models\UserModel;
 use App\Libraries\View;
-use App\Middleware\Permissions;
 
 class HobbyController extends Controller
 {
@@ -52,7 +51,7 @@ class HobbyController extends Controller
         $hobbyId = Helper::getIdFromUrl('hobby');
         $hobby = HobbyModel::load()->get($hobbyId);
 
-        Permissions::checkIdsFromSessionAndUrl($hobby->user_id);
+        Helper::checkIdsFromSessionAndUrl($hobby->user_id);
        
         View::render('hobbies/edit.view', [
             'method'    => 'POST',
@@ -81,7 +80,7 @@ class HobbyController extends Controller
         $hobbyId = Helper::getIdFromUrl('hobby');
         $hobby = HobbyModel::load()->get($hobbyId);
 
-        Permissions::checkIdsFromSessionAndUrl($hobby->user_id);
+        Helper::checkIdsFromSessionAndUrl($hobby->user_id);
         HobbyModel::load()->destroy($hobbyId);
         header("Location: /hobby");
     }

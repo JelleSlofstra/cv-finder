@@ -7,6 +7,7 @@
         <?php foreach($vars['volunteerjobs'] as $volunteerjob): ?>
             <li>
                 <div class="row">
+                    
                     <div class="col-2">
                         <?= $volunteerjob->start_year ?> -
                         <?php if (!$volunteerjob->end_year): ?>
@@ -15,21 +16,24 @@
                             <?= $volunteerjob->end_year ?>:
                         <?php endif; ?>
                     </div>
+
                     <div class="col-6">
                         <b> <?= $volunteerjob->job ?></b> 
                         bij <?= $volunteerjob->organization?>
                         <?= $volunteerjob->info ?>
                     </div>
-                    <div class="col-3">
-                        <a href="/volunteerjob/<?= $volunteerjob->id?>/edit">Aanpassen</a>
-                        <a href="/volunteerjob/<?= $volunteerjob->id?>/destroy">Verwijderen</a>
+
+                    <div class="col-4">
+                        <a href="/volunteerjob/<?= $volunteerjob->id?>/edit"><button type="button" class="btn btn-outline-dark">Aanpassen</button></a>
+                        <a href="/volunteerjob/<?= $volunteerjob->id?>/destroy"><button type="button" class="btn btn-outline-dark">Verwijderen</button></a>
                     </div>
+                    
                 </div>
             </li>            
         <?php endforeach; ?>
     </ul>
     <hr>
-    <a href="/volunteerjob/create">Voeg nieuw vrijwilligerswerk toe</a>  
+    <a href="/volunteerjob/create"><button type="button" class="btn btn-outline-dark">Voeg nieuw vrijwilligerswerk toe</button></a>  
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

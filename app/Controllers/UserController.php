@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Models\UserModel;
 use App\Libraries\View;
 use App\Models\RoleModel;
-use App\Middleware\Permissions;
 
 class UserController extends Controller
 {
@@ -63,7 +62,7 @@ class UserController extends Controller
         $userId = Helper::getIdFromUrl('user');
         $user = UserModel::load()->get($userId);
 
-        Permissions::checkIdsFromSessionAndUrl($userId);
+        Helper::checkIdsFromSessionAndUrl($userId);
 
         View::render('users/edit.view', [
             'method'    => 'POST',
@@ -113,7 +112,7 @@ class UserController extends Controller
     {
         $userId = Helper::getIdFromUrl('user');
 
-        Permissions::checkIdsFromSessionAndUrl($userId);
+        Helper::checkIdsFromSessionAndUrl($userId);
 
         UserModel::load()->destroy($userId);
         header("Location: /admin");
