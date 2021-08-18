@@ -5,23 +5,34 @@ body {
     font-family: 'Assistant', sans-serif;
     font-size: 1em;
     font-weight: 200;
-    background-color: white;
+    background-color: #fcfced;
 }
 
 h1, h2, h3 {
     text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .navbar-nav {
     color : white;    
 }
 
-.purple {
+.sidebar {
     background-color: purple;
 }
 
 .main {
-    min-height: 500px;
+    min-height: 800px;
+}
+
+.main button {
+    color: purple;
+    border-color: purple;
+}
+
+.main button:hover{
+    background-color: purple;
 }
 
 .center-box {

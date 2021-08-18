@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Models\JobModel;
 use App\Models\UserModel;
 use App\Libraries\View;
-use App\Middleware\Permissions;
 
 class JobController extends Controller
 {
@@ -68,7 +67,7 @@ class JobController extends Controller
         $jobId = Helper::getIdFromUrl('job');
         $job = JobModel::load()->get($jobId);
 
-        Permissions::checkIdsFromSessionAndUrl($job->user_id);
+        Helper::checkIdsFromSessionAndUrl($job->user_id);
 
         View::render('jobs/edit.view', [
             'method'    => 'POST',
@@ -117,7 +116,7 @@ class JobController extends Controller
         $jobId = Helper::getIdFromUrl('job');
         $job = JobModel::load()->get($jobId);
 
-        Permissions::checkIdsFromSessionAndUrl($job->user_id);
+        Helper::checkIdsFromSessionAndUrl($job->user_id);
 
         JobModel::load()->destroy($jobId);
         header("Location: /job");    

@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Models\VolunteerJobModel;
 use App\Models\UserModel;
 use App\Libraries\View;
-use App\Middleware\Permissions;
 
 class VolunteerJobController extends Controller
 {
@@ -71,7 +70,7 @@ class VolunteerJobController extends Controller
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
         $volunteerJob = VolunteerJobModel::load()->get($volunteerJobId);
 
-        Permissions::checkIdsFromSessionAndUrl($volunteerJob->user_id);
+        Helper::checkIdsFromSessionAndUrl($volunteerJob->user_id);
 
         View::render('volunteerjobs/edit.view', [
             'method'        => 'POST',
@@ -114,7 +113,7 @@ class VolunteerJobController extends Controller
         $volunteerJobId = Helper::getIdFromUrl('volunteerjob');
         $volunteerJob = VolunteerJobModel::load()->get($volunteerJobId);
 
-        Permissions::checkIdsFromSessionAndUrl($volunteerJob->user_id);
+        Helper::checkIdsFromSessionAndUrl($volunteerJob->user_id);
         
         VolunteerJobModel::load()->destroy($volunteerJobId);
         header("Location: /volunteerjob");

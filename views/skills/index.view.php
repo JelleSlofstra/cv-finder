@@ -11,15 +11,15 @@
                         <?=$skill->name?>
                     </div>
                     <div class="col-6">
-                        <a href="/skill/<?= $skill->id?>/edit">Aanpassen</a>
-                        <a href="/skill/<?= $skill->id?>/destroy">Verwijderen</a>
+                        <a href="/skill/<?= $skill->id?>/edit"><button type="button" class="btn btn-outline-dark">Aanpassen</button></a>
+                        <a href="/skill/<?= $skill->id?>/destroy"><button type="button" class="btn btn-outline-dark">Verwijderen</button></a>
                     </div>
                 </div> 
             </li>                       
         <?php endforeach;?>
     </ul>
     <hr>
-    <a href="/skill/create">Voeg een nieuwe skill toe</a>
+    <a href="/skill/create"><button type="button" class="btn btn-outline-dark">Voeg een nieuwe skill toe</button></a>
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

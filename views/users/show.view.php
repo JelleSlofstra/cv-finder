@@ -19,9 +19,9 @@
         <div class="col-2">Geboortedatum: </div>
         <div class="col-10"><?= $vars['user']->birthday ?></div>
     </div> 
-    
-    <a href="/user/<?=$vars['user']->id?>/edit">Pas de gegevens van deze gebruiker aan</a>
     <hr>
+    <a href="/user/<?=$vars['user']->id?>/edit"><button type="button" class="btn btn-outline-dark">Pas de gegevens van deze gebruiker aan</button></a>
+    
 </div>
 
 <?php require 'views/partials/footer.view.php' ?>

@@ -46,12 +46,6 @@ return [
             'created_by'    => 1,
         ],
         [
-            'user_id'       => 1,
-            'name'         => 'coachen',        
-            'created'       => date('Y-m-d H:i:s'),
-            'created_by'    => 1,
-        ],
-        [
             'user_id'       => 2,
             'name'          => 'programmeren',        
             'created'       => date('Y-m-d H:i:s'),

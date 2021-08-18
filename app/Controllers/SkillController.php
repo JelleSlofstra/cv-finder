@@ -6,7 +6,6 @@ use App\Helpers\Helper;
 use App\Models\SkillModel;
 use App\Models\UserModel;
 use App\Libraries\View;
-use App\Middleware\Permissions;
 
 class SkillController extends Controller
 {
@@ -51,7 +50,7 @@ class SkillController extends Controller
         $skillId = Helper::getIdFromUrl('skill');
         $skill = SkillModel::load()->get($skillId);
 
-        Permissions::checkIdsFromSessionAndUrl($skill->user_id);
+        Helper::checkIdsFromSessionAndUrl($skill->user_id);
         
         View::render('skills/edit.view', [
             'method'    => 'POST',
@@ -84,7 +83,7 @@ class SkillController extends Controller
         $skillId = Helper::getIdFromUrl('skill');
         $skill = SkillModel::load()->get($skillId);
 
-        Permissions::checkIdsFromSessionAndUrl($skill->user_id);
+        Helper::checkIdsFromSessionAndUrl($skill->user_id);
 
         SkillModel::load()->destroy($skillId);        
         header("Location: /skill");     
